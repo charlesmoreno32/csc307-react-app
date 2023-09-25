@@ -22,11 +22,19 @@ const characters = [
 ];
 
 function MyApp() {
+const [characters, setCharacters] = useState([
+  {
+    name: 'Charlie',
+    job: 'Janitor',
+  },
+  // the rest of the data
+]); 
+  
 return (
-  <div className="container">
+<div className="container">
     <Table characterData={characters} />
-  </div>
-);
+   </div>
+) 
 }
 
 
