@@ -8,13 +8,20 @@ function MyApp() {
   const [characters, setCharacters] = useState([]);
  
 
-  function removeOneCharacter (index) {
+  function removeOneCharacter (index, row) {
+    fetch('http://localhost:8000/users/' + row.id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: null
+    });
     const updated = characters.filter((character, i) => {
         return i !== index
     });
     setCharacters(updated);
   }
-  
+
   function fetchUsers() {
     const promise = fetch("http://localhost:8000/users");
     return promise;
