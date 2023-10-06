@@ -39,12 +39,19 @@ function MyApp() {
   }
 
   function updateList(person) { 
-    postUser(person)
-      .then((res) => res.json())
-      .then((person) => setCharacters([...characters, person]))
-      .catch((error) => {
-        console.log(error);
-      })
+    const prom = postUser(person);
+    prom.then(response => {
+      if(response.status === 201){
+        prom.then((res) => res.json())
+        .then((person) => setCharacters([...characters, person]))
+        .catch((error) => {
+          console.log(error);
+        })
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 }
 
   useEffect(() => {
