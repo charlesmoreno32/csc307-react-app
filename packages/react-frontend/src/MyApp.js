@@ -8,7 +8,7 @@ function MyApp() {
   const [characters, setCharacters] = useState([]);
  
 
-  function removeOneCharacter (index, row) {
+  function removeOneCharacter (row, index) {
     fetch('http://localhost:8000/users/' + row.id, {
       method: 'DELETE',
       headers: {
@@ -40,7 +40,8 @@ function MyApp() {
 
   function updateList(person) { 
     postUser(person)
-      .then(() => setCharacters([...characters, person]))
+      .then((res) => res.json())
+      .then((person) => setCharacters([...characters, person]))
       .catch((error) => {
         console.log(error);
       })
