@@ -9,7 +9,7 @@ function MyApp() {
  
 
   function removeOneCharacter (row, index) {
-    fetch('http://localhost:8000/users/' + row.id, {
+    fetch('http://localhost:8000/users/' + row._id, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
